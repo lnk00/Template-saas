@@ -1,9 +1,12 @@
+"use client";
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Todo } from "./todo";
+import { useState } from "react";
 
 export function TodosBlock() {
-  const todos = [
+  const [todos, setTodos] = useState([
     {
       title: "Monday",
       visible: true,
@@ -39,7 +42,35 @@ export function TodosBlock() {
       visible: false,
       isFocused: false,
     },
-  ];
+  ]);
+
+  const onNextClick = () => {
+    const firstVisible = todos.findIndex((t) => t.visible);
+    const firstNonVisible = todos.findIndex(
+      (t, idx) => !t.visible && idx > firstVisible,
+    );
+    setTodos(
+      todos.map((t, idx) => {
+        if (idx == firstVisible) t.visible = false;
+        if (idx == firstNonVisible) t.visible = true;
+        return t;
+      }),
+    );
+  };
+
+  const onPrevClick = () => {
+    const lastVisible = todos.findLastIndex((t) => t.visible);
+    const lastNonVisible = todos.findLastIndex(
+      (t, idx) => !t.visible && idx < lastVisible,
+    );
+    setTodos(
+      todos.map((t, idx) => {
+        if (idx == lastVisible) t.visible = false;
+        if (idx == lastNonVisible) t.visible = true;
+        return t;
+      }),
+    );
+  };
 
   return (
     <div>
@@ -48,10 +79,20 @@ export function TodosBlock() {
           Todos
         </h1>
         <div className="flex ml-auto gap-2">
-          <Button variant={"outline"} size={"sm"}>
+          <Button
+            variant={"outline"}
+            disabled={todos.findIndex((t) => t.visible) == 0}
+            size={"sm"}
+            onClick={onPrevClick}
+          >
             <ChevronLeft />
           </Button>
-          <Button variant={"outline"} size={"sm"}>
+          <Button
+            variant={"outline"}
+            disabled={todos.findLastIndex((t) => t.visible) == todos.length - 1}
+            size={"sm"}
+            onClick={onNextClick}
+          >
             <ChevronRight />
           </Button>
         </div>
