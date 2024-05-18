@@ -1,11 +1,7 @@
 import { cn } from "@/lib/utils";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import { Settings } from "lucide-react";
+import { Button } from "./ui/button";
 
 type Props = {
   className?: string;
@@ -14,16 +10,16 @@ type Props = {
 export function SettingBtn(props: Props) {
   return (
     <div className={cn(props.className)}>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger>
-            <Settings className="w-8 h-8 hover:cursor-pointer hover:text-teal-400 transition-all" />
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Settings</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant={"outline"} size={"sm"}>
+            <Settings />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Settings</p>
+        </TooltipContent>
+      </Tooltip>
     </div>
   );
 }

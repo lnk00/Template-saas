@@ -5,7 +5,7 @@ type Props = {
   className?: string;
 };
 
-export function ViewSwitch(props: Props) {
+export function ViewSwitcher(props: Props) {
   return (
     <div className={cn("flex items-center gap-4", props.className)}>
       <div className="text-lg font-semibold text-teal-400">Weekly</div>
