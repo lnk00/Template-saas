@@ -13,7 +13,7 @@ export function SettingBtn(props: Props) {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant={"outline"} size={"sm"}>
-            <Settings />
+            <Settings className="text-slate-800" />
           </Button>
         </TooltipTrigger>
         <TooltipContent>

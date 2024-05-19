@@ -7,7 +7,7 @@ type Props = {
 
 export function Container(props: Props) {
   return (
-    <div className={cn("max-w-[1280px] m-auto relative", props.className)}>
+    <div className={cn("container relative", props.className)}>
       {props.children}
     </div>
   );
