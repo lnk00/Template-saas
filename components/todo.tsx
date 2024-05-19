@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { cn } from "@/lib/utils";
+import { TodoItem } from "./todo-item";
 
 type Props = {
   title: string;
@@ -25,7 +26,10 @@ export function Todo(props: Props) {
             <CardTitle>{props.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="h-48"></p>
+            <div className="flex flex-col h-48 gap-2">
+              <TodoItem />
+              <TodoItem />
+            </div>
           </CardContent>
           <CardFooter>
             <Button className="w-full">
@@ -43,7 +47,7 @@ export function Todo(props: Props) {
             <CardTitle>{props.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="h-48"></p>
+            <div className="flex flex-row h-48"></div>
           </CardContent>
           <CardFooter>
             <Button className="w-full">
