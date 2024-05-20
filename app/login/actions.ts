@@ -23,3 +23,19 @@ export async function LoginWithGithub() {
     redirect(data.url);
   }
 }
+
+export async function LoginWithOTP(formData: FormData) {
+  const supabase = createServerSupabaseClient();
+  const email = formData.get("email") as string;
+
+  const { data, error } = await supabase.auth.signInWithOtp({ email });
+
+  if (error) {
+    console.log("Error login with OTP: ", error);
+    return;
+  }
+
+  if (data) {
+    console.log("Login succeed: ", data);
+  }
+}

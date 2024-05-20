@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import { cn } from "@/utils/cn";
-import { LoginWithGithub } from "@/app/login/actions";
+import { LoginWithGithub, LoginWithOTP } from "@/app/login/actions";
 
 export default function LoginForm() {
   return (
@@ -18,10 +18,15 @@ export default function LoginForm() {
       <form className="my-8">
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="john.doe@gmail.com" type="email" />
+          <Input
+            id="email"
+            name="email"
+            placeholder="john.doe@gmail.com"
+            type="email"
+          />
         </LabelInputContainer>
 
-        <Button className="w-full" size={"lg"}>
+        <Button formAction={LoginWithOTP} className="w-full" size={"lg"}>
           Login
           <ArrowRight className="h-4" />
         </Button>
