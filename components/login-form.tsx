@@ -4,16 +4,9 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import { cn } from "@/utils/cn";
-import { supabase } from "@/lib/supabase";
+import { LoginWithGithub } from "@/app/login/actions";
 
 export default function LoginForm() {
-  async function onSubmit(formData: FormData) {
-    "use server";
-
-    console.log("SERVER ACTION INVOKED");
-    supabase.auth.getUser().then((u) => console.log(u));
-  }
-
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black relative">
       <h2 className="font-bold text-xl">Welcome to Vecko</h2>
@@ -22,7 +15,7 @@ export default function LoginForm() {
         simple way
       </p>
 
-      <form className="my-8" action={onSubmit}>
+      <form className="my-8">
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
           <Input id="email" placeholder="john.doe@gmail.com" type="email" />
@@ -38,7 +31,7 @@ export default function LoginForm() {
         <div className="flex flex-col space-y-4">
           <button
             className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-slate-50 dark:bg-slate-900 dark:shadow-[0px_0px_1px_1px_var(--slate-800)]"
-            type="submit"
+            formAction={LoginWithGithub}
           >
             <IconBrandGithub className="h-4 w-4 text-slate-800 dark:text-slate-300" />
             <span className="text-slate-700 dark:text-slate-300 text-sm">

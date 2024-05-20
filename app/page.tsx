@@ -3,8 +3,11 @@ import { TodosBlock } from "@/components/todos-block";
 import { Container } from "@/components/ui/container";
 import { DotBackground } from "@/components/ui/dot-background";
 import { ViewSwitcher } from "@/components/view-switch";
+import { protectRoute } from "@/lib/supabase";
 
-export default function Home() {
+export default async function Home() {
+  await protectRoute();
+
   return (
     <main className="h-[150rem] w-full relative">
       <DotBackground />
