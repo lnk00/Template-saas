@@ -1,3 +1,4 @@
+import { ProfileBtn } from "./profile-btn";
 import { SettingBtn } from "./setting-btn";
 
 export function HeaderBlock() {
@@ -11,7 +12,10 @@ export function HeaderBlock() {
           Week 20 : May 13 - May 19
         </h1>
       </div>
-      <SettingBtn className="ml-auto" />
+      <div className="flex gap-2 ml-auto">
+        <SettingBtn />
+        <ProfileBtn />
+      </div>
     </div>
   );
 }
