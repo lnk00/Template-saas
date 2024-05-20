@@ -1,39 +1,7 @@
-import {
-  CookieOptions,
-  createBrowserClient,
-  createServerClient,
-} from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { CookieOptions, createServerClient } from "@supabase/ssr";
 import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
-
-export function createServerSupabaseClient() {
-  const cookieStore = cookies();
-  return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value;
-        },
-        set(name: string, value: string, options: CookieOptions) {
-          cookieStore.set({ name, value, ...options });
-        },
-        remove(name: string, options: CookieOptions) {
-          cookieStore.delete({ name, ...options });
-        },
-      },
-    },
-  );
-}
-
-export function createBrowserSupabaseClient() {
-  return createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  );
-}
+import { createServerSupabaseClient } from "./server";
 
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({
