@@ -25,7 +25,7 @@ export default function LoginForm() {
         simple way
       </p>
 
-      <form className="my-8">
+      <form className="mt-8">
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
           <Input
