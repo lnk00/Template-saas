@@ -2,9 +2,19 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
+import {
+  IconBrandApple,
+  IconBrandGithub,
+  IconBrandGoogle,
+  IconBrandNotion,
+} from "@tabler/icons-react";
 import { cn } from "@/utils/cn";
-import { LoginWithGithub, LoginWithOTP } from "@/app/login/actions";
+import {
+  LoginWithApple,
+  LoginWithGithub,
+  LoginWithNotion,
+  LoginWithOTP,
+} from "@/app/login/actions";
 
 export default function LoginForm() {
   return (
@@ -46,11 +56,21 @@ export default function LoginForm() {
           </button>
           <button
             className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-slate-50 dark:bg-slate-900 dark:shadow-[0px_0px_1px_1px_var(--slate-800)]"
-            type="submit"
+            formAction={LoginWithApple}
           >
-            <IconBrandGoogle className="h-4 w-4 text-slate-800 dark:text-slate-300" />
+            <IconBrandApple className="h-4 w-4 text-slate-800 dark:text-slate-300" />
             <span className="text-slate-700 dark:text-slate-300 text-sm">
-              Google
+              Apple
+            </span>
+            <BottomGradient />
+          </button>
+          <button
+            className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-slate-50 dark:bg-slate-900 dark:shadow-[0px_0px_1px_1px_var(--slate-800)]"
+            formAction={LoginWithNotion}
+          >
+            <IconBrandNotion className="h-4 w-4 text-slate-800 dark:text-slate-300" />
+            <span className="text-slate-700 dark:text-slate-300 text-sm">
+              Notion
             </span>
             <BottomGradient />
           </button>
