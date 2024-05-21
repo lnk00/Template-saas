@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/input-otp";
 import { Button } from "@/components/ui/button";
 import { VerifyOtp } from "./actions";
+import { LockKeyholeOpen } from "lucide-react";
 
 export default function Otp({
   searchParams,
@@ -21,8 +22,12 @@ export default function Otp({
       <DotBackground />
       <Container className="h-full flex items-center justify-center">
         <Card className="p-4 md:p-8">
+          <LockKeyholeOpen
+            className="h-16 w-16 mb-4 text-slate-800"
+            strokeWidth={2}
+          />
           <h2 className="font-bold text-xl">One Time Password</h2>
-          <p className="text-slate-600 text-sm max-w-sm mt-2 dark:text-slate-300 mb-8">
+          <p className="text-slate-600 text-sm max-w-sm mt-1 dark:text-slate-300 mb-4">
             You received an email with your temporary code
           </p>
 

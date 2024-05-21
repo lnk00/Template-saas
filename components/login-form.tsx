@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LockKeyhole } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -19,6 +19,7 @@ import {
 export default function LoginForm() {
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black relative">
+      <LockKeyhole className="h-16 w-16 mb-4 text-slate-800" strokeWidth={2} />
       <h2 className="font-bold text-xl">Welcome to Vecko</h2>
       <p className="text-slate-600 text-sm max-w-sm mt-2 dark:text-slate-300">
         Login to vecko to plan your week/month in the most proeficient ans
