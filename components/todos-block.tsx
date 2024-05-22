@@ -3,7 +3,8 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Todo } from "./todo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 export function TodosBlock() {
   const [todos, setTodos] = useState([
@@ -15,7 +16,7 @@ export function TodosBlock() {
     {
       title: "Thuesday",
       visible: true,
-      isFocused: true,
+      isFocused: false,
     },
     {
       title: "Wednesday",
@@ -43,6 +44,22 @@ export function TodosBlock() {
       isFocused: false,
     },
   ]);
+
+  useEffect(() => {
+    let day = dayjs().day();
+    if (day == 0) day = 6;
+    else if (day == 6) day = 0;
+    else day = day - 1;
+
+    setTodos(
+      todos.map((t, idx) => {
+        if (idx == day) {
+          t.isFocused = true;
+        }
+        return t;
+      }),
+    );
+  }, []);
 
   const onNextClick = () => {
     const firstVisible = todos.findIndex((t) => t.visible);
