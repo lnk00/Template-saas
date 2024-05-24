@@ -59,6 +59,8 @@ export function TodosBlock() {
         return t;
       }),
     );
+
+    fetch("/tasks").then((data) => console.log(data));
   }, []);
 
   const onNextClick = () => {
