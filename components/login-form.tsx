@@ -5,7 +5,6 @@ import { Label } from "./ui/label";
 import {
   IconBrandApple,
   IconBrandGithub,
-  IconBrandGoogle,
   IconBrandNotion,
 } from "@tabler/icons-react";
 import { cn } from "@/utils/cn";
@@ -14,7 +13,7 @@ import {
   LoginWithGithub,
   LoginWithNotion,
   LoginWithOTP,
-} from "@/app/login/actions";
+} from "@/app/auth/login/actions";
 
 export default function LoginForm() {
   return (

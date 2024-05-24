@@ -76,6 +76,6 @@ export async function LoginWithOTP(formData: FormData) {
 
   if (data) {
     const queryParamString = new URLSearchParams(`email=${email}`).toString();
-    return redirect(`/otp?${queryParamString}`);
+    return redirect(`/auth/otp?${queryParamString}`);
   }
 }
