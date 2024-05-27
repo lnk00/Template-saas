@@ -1,6 +1,11 @@
+import { Tables } from "@/lib/supabase/database.types";
 import { Checkbox } from "./ui/checkbox";
 
-export function TodoItem() {
+type Props = {
+  task: Tables<"tasks">;
+};
+
+export function TodoItem(props: Props) {
   return (
     <div className="items-center flex space-x-2">
       <Checkbox id="terms1" />
@@ -9,7 +14,7 @@ export function TodoItem() {
           htmlFor="terms1"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
-          Add other platforms to the parser
+          {props.task.title}
         </label>
       </div>
     </div>

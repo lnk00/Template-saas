@@ -10,9 +10,12 @@ import {
 } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { TodoItem } from "./todo-item";
+import { Tables } from "@/lib/supabase/database.types";
+import { tasks } from "@/store/tasks";
 
 type Props = {
   title: string;
+  tasks: Tables<"tasks">[];
   isFocused?: boolean;
   className?: string;
 };
@@ -27,8 +30,9 @@ export function Todo(props: Props) {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col h-48 gap-2">
-              <TodoItem />
-              <TodoItem />
+              {props.tasks.map((task, idx) => (
+                <TodoItem key={idx} task={task} />
+              ))}
             </div>
           </CardContent>
           <CardFooter>
@@ -47,7 +51,11 @@ export function Todo(props: Props) {
             <CardTitle>{props.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex flex-row h-48"></div>
+            <div className="flex flex-col h-48 gap-2">
+              {props.tasks.map((task, idx) => (
+                <TodoItem key={idx} task={task} />
+              ))}
+            </div>
           </CardContent>
           <CardFooter>
             <Button className="w-full">

@@ -9,6 +9,80 @@ import { useAtom } from "jotai";
 import { tasks } from "@/store/tasks";
 import { useHydrateAtoms } from "jotai/utils";
 import { Tables } from "@/lib/supabase/database.types";
+import weekOfYear from "dayjs/plugin/weekOfYear";
+
+function buildTodoWeekDays() {
+  dayjs.extend(weekOfYear);
+
+  const today = dayjs();
+
+  const days = [
+    {
+      title: today.startOf("week").format("dddd"),
+      date: today.startOf("week"),
+      visible: false,
+      isFocused: today.day() === today.startOf("week").day(),
+    },
+    {
+      title: today.startOf("week").add(1, "day").format("dddd"),
+      date: today.startOf("week").add(1, "day"),
+      visible: false,
+      isFocused: today.day() === today.startOf("week").add(1, "day").day(),
+    },
+    {
+      title: today.startOf("week").add(2, "day").format("dddd"),
+      date: today.startOf("week").add(2, "day"),
+      visible: false,
+      isFocused: today.day() === today.startOf("week").add(2, "day").day(),
+    },
+    {
+      title: today.startOf("week").add(3, "day").format("dddd"),
+      date: today.startOf("week").add(3, "day"),
+      visible: false,
+      isFocused: today.day() === today.startOf("week").add(3, "day").day(),
+    },
+    {
+      title: today.startOf("week").add(4, "day").format("dddd"),
+      date: today.startOf("week").add(4, "day"),
+      visible: false,
+      isFocused: today.day() === today.startOf("week").add(4, "day").day(),
+    },
+    {
+      title: today.startOf("week").add(5, "day").format("dddd"),
+      date: today.startOf("week").add(5, "day"),
+      visible: false,
+      isFocused: today.day() === today.startOf("week").add(5, "day").day(),
+    },
+    {
+      title: today.startOf("week").add(6, "day").format("dddd"),
+      date: today.startOf("week").add(6, "day"),
+      visible: false,
+      isFocused: today.day() === today.startOf("week").add(6, "day").day(),
+    },
+  ];
+
+  let visibleCount = 0;
+  for (let i = days.length - 1; i >= 0; i--) {
+    if (
+      days[i].date.isAfter(today) &&
+      days[i].date.diff(today, "day") < 4 &&
+      visibleCount < 5
+    ) {
+      days[i].visible = true;
+      visibleCount += 1;
+    } else if (visibleCount < 5 && days[i].date.isBefore(today)) {
+      days[i].visible = true;
+      visibleCount += 1;
+    } else if (today.day() === days[i].date.day()) {
+      days[i].visible = true;
+      visibleCount += 1;
+    } else {
+      days[i].visible = false;
+    }
+  }
+
+  return days;
+}
 
 type Props = {
   tasks: Tables<"tasks">[];
@@ -17,69 +91,28 @@ type Props = {
 export function TodosBlock(props: Props) {
   useHydrateAtoms([[tasks, props.tasks]]);
   const [taskList] = useAtom(tasks);
-  const [todos, setTodos] = useState([
-    {
-      title: "Monday",
-      visible: true,
-      isFocused: false,
-    },
-    {
-      title: "Thuesday",
-      visible: true,
-      isFocused: false,
-    },
-    {
-      title: "Wednesday",
-      visible: true,
-      isFocused: false,
-    },
-    {
-      title: "Thursday",
-      visible: true,
-      isFocused: false,
-    },
-    {
-      title: "Friday",
-      visible: true,
-      isFocused: false,
-    },
-    {
-      title: "Saturday",
-      visible: false,
-      isFocused: false,
-    },
-    {
-      title: "Sunday",
-      visible: false,
-      isFocused: false,
-    },
-  ]);
+  const [weekDays, setWeekDays] = useState(buildTodoWeekDays());
 
-  useEffect(() => {
+  const setFocusedDay = () => {
     let day = dayjs().day();
-    if (day == 0) day = 6;
-    else if (day == 6) day = 0;
-    else day = day - 1;
 
-    setTodos(
-      todos.map((t, idx) => {
+    setWeekDays(
+      weekDays.map((t, idx) => {
         if (idx == day) {
           t.isFocused = true;
         }
         return t;
       }),
     );
-
-    console.log("COUNT: ", taskList);
-  }, [taskList]);
+  };
 
   const onNextClick = () => {
-    const firstVisible = todos.findIndex((t) => t.visible);
-    const firstNonVisible = todos.findIndex(
+    const firstVisible = weekDays.findIndex((t) => t.visible);
+    const firstNonVisible = weekDays.findIndex(
       (t, idx) => !t.visible && idx > firstVisible,
     );
-    setTodos(
-      todos.map((t, idx) => {
+    setWeekDays(
+      weekDays.map((t, idx) => {
         if (idx == firstVisible) t.visible = false;
         if (idx == firstNonVisible) t.visible = true;
         return t;
@@ -88,18 +121,23 @@ export function TodosBlock(props: Props) {
   };
 
   const onPrevClick = () => {
-    const lastVisible = todos.findLastIndex((t) => t.visible);
-    const lastNonVisible = todos.findLastIndex(
+    const lastVisible = weekDays.findLastIndex((t) => t.visible);
+    const lastNonVisible = weekDays.findLastIndex(
       (t, idx) => !t.visible && idx < lastVisible,
     );
-    setTodos(
-      todos.map((t, idx) => {
+    setWeekDays(
+      weekDays.map((t, idx) => {
         if (idx == lastVisible) t.visible = false;
         if (idx == lastNonVisible) t.visible = true;
         return t;
       }),
     );
   };
+
+  useEffect(() => {
+    setFocusedDay();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
@@ -110,7 +148,7 @@ export function TodosBlock(props: Props) {
         <div className="flex ml-auto gap-2">
           <Button
             variant={"outline"}
-            disabled={todos.findIndex((t) => t.visible) == 0}
+            disabled={weekDays.findIndex((t) => t.visible) == 0}
             size={"sm"}
             onClick={onPrevClick}
           >
@@ -118,7 +156,9 @@ export function TodosBlock(props: Props) {
           </Button>
           <Button
             variant={"outline"}
-            disabled={todos.findLastIndex((t) => t.visible) == todos.length - 1}
+            disabled={
+              weekDays.findLastIndex((t) => t.visible) == weekDays.length - 1
+            }
             size={"sm"}
             onClick={onNextClick}
           >
@@ -128,10 +168,15 @@ export function TodosBlock(props: Props) {
       </div>
 
       <div className="flex gap-4 mt-4">
-        {todos.map(
-          (todo, idx) =>
-            todo.visible && (
-              <Todo key={idx} title={todo.title} isFocused={todo.isFocused} />
+        {weekDays.map(
+          (day, idx) =>
+            day.visible && (
+              <Todo
+                key={idx}
+                title={day.title}
+                isFocused={day.isFocused}
+                tasks={taskList}
+              />
             ),
         )}
       </div>

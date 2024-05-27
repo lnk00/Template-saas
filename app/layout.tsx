@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import dayjs from "dayjs";
-import en from "dayjs/locale/en";
 import { Provider as StoreProvider } from "jotai";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,11 +16,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  dayjs.locale({
-    ...en,
-    weekStart: 1,
-  });
-
   return (
     <html lang="en">
       <StoreProvider>
