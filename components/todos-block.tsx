@@ -5,8 +5,18 @@ import { Button } from "./ui/button";
 import { Todo } from "./todo";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
+import { useAtom } from "jotai";
+import { tasks } from "@/store/tasks";
+import { useHydrateAtoms } from "jotai/utils";
+import { Tables } from "@/lib/supabase/database.types";
 
-export function TodosBlock() {
+type Props = {
+  tasks: Tables<"tasks">[];
+};
+
+export function TodosBlock(props: Props) {
+  useHydrateAtoms([[tasks, props.tasks]]);
+  const [taskList] = useAtom(tasks);
   const [todos, setTodos] = useState([
     {
       title: "Monday",
@@ -60,8 +70,8 @@ export function TodosBlock() {
       }),
     );
 
-    fetch("/tasks").then((data) => console.log(data));
-  }, []);
+    console.log("COUNT: ", taskList);
+  }, [taskList]);
 
   const onNextClick = () => {
     const firstVisible = todos.findIndex((t) => t.visible);

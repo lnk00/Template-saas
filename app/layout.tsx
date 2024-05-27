@@ -4,6 +4,7 @@ import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import dayjs from "dayjs";
 import en from "dayjs/locale/en";
+import { Provider as StoreProvider } from "jotai";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +25,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <TooltipProvider delayDuration={0}>
-        <body className={inter.className}>{children}</body>
-      </TooltipProvider>
+      <StoreProvider>
+        <TooltipProvider delayDuration={0}>
+          <body className={inter.className}>{children}</body>
+        </TooltipProvider>
+      </StoreProvider>
     </html>
   );
 }
