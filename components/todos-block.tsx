@@ -175,7 +175,9 @@ export function TodosBlock(props: Props) {
                 key={idx}
                 title={day.title}
                 isFocused={day.isFocused}
-                tasks={taskList}
+                tasks={taskList.filter(
+                  (t) => t.due_date === day.date.format("YYYY-MM-DD"),
+                )}
               />
             ),
         )}

@@ -5,10 +5,17 @@ import { DotBackground } from "@/components/ui/dot-background";
 import { ViewSwitcher } from "@/components/view-switch";
 import { protectRoute } from "@/lib/supabase/middleware";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import dayjs from "dayjs";
+import weekOfYear from "dayjs/plugin/weekOfYear";
 
 async function getData() {
+  dayjs.extend(weekOfYear);
   const supabase = createServerSupabaseClient();
-  const { data, error } = await supabase.from("tasks").select();
+  const { data, error } = await supabase
+    .from("tasks")
+    .select()
+    .gte("due_date", dayjs().startOf("week").format("YYYY-MM-DD"))
+    .lte("due_date", dayjs().endOf("week").format("YYYY-MM-DD"));
 
   if (error) {
     console.log("Error fetching tasks: ", error);
