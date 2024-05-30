@@ -7,13 +7,13 @@ import {
   IconBrandGithub,
   IconBrandNotion,
 } from "@tabler/icons-react";
-import { cn } from "@/utils/cn";
 import {
   LoginWithApple,
   LoginWithGithub,
   LoginWithNotion,
   LoginWithOTP,
 } from "@/app/auth/login/actions";
+import { cn } from "@/lib/utils";
 
 export default function LoginForm() {
   return (
