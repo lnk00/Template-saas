@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Provider as StoreProvider } from "jotai";
-
-const inter = Inter({ subsets: ["latin"] });
+import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
   title: "Vecko",
@@ -20,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <StoreProvider>
         <TooltipProvider delayDuration={0}>
-          <body className={inter.className}>{children}</body>
+          <body className={GeistSans.className}>{children}</body>
         </TooltipProvider>
       </StoreProvider>
     </html>

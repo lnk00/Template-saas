@@ -5,6 +5,7 @@ import { Label } from "./ui/label";
 import {
   IconBrandApple,
   IconBrandGithub,
+  IconBrandLinkedin,
   IconBrandNotion,
 } from "@tabler/icons-react";
 import {
@@ -48,29 +49,9 @@ export default function LoginForm() {
             className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-slate-50 dark:bg-slate-900 dark:shadow-[0px_0px_1px_1px_var(--slate-800)]"
             formAction={LoginWithGithub}
           >
-            <IconBrandGithub className="h-4 w-4 text-slate-800 dark:text-slate-300" />
+            <IconBrandLinkedin className="h-4 w-4 text-slate-800 dark:text-slate-300" />
             <span className="text-slate-700 dark:text-slate-300 text-sm">
-              GitHub
-            </span>
-            <BottomGradient />
-          </button>
-          <button
-            className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-slate-50 dark:bg-slate-900 dark:shadow-[0px_0px_1px_1px_var(--slate-800)]"
-            formAction={LoginWithApple}
-          >
-            <IconBrandApple className="h-4 w-4 text-slate-800 dark:text-slate-300" />
-            <span className="text-slate-700 dark:text-slate-300 text-sm">
-              Apple
-            </span>
-            <BottomGradient />
-          </button>
-          <button
-            className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-slate-50 dark:bg-slate-900 dark:shadow-[0px_0px_1px_1px_var(--slate-800)]"
-            formAction={LoginWithNotion}
-          >
-            <IconBrandNotion className="h-4 w-4 text-slate-800 dark:text-slate-300" />
-            <span className="text-slate-700 dark:text-slate-300 text-sm">
-              Notion
+              Connect with LinkedIn
             </span>
             <BottomGradient />
           </button>
