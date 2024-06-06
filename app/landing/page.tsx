@@ -26,7 +26,7 @@ export default async function Landing() {
           product sales, our solution, reshapes your LinkedIn profile into the
           powerhouse it deserves to be.
         </h3>
-        <div className="mb-12">
+        <div className="mb-16">
           <Button size={"lg"} className="bg-purple-500 hover:bg-purple-500/90">
             start optimizing
             <WandSparkles className="ml-2 h-4 w-4" />
