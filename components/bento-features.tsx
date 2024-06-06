@@ -6,8 +6,7 @@ import {
   IconTableColumn,
 } from "@tabler/icons-react";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
-import Image from "next/image";
-import test from "../public/test.png";
+import { VisualsFeatureHeader } from "./feature-headers";
 
 export function BentoFeatures() {
   return (
@@ -25,16 +24,7 @@ export function BentoFeatures() {
     </BentoGrid>
   );
 }
-const SkeletonVisuals = () => (
-  <div className="relative w-full h-full">
-    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-slate-100 dark:bg-black"></div>
-    <Image
-      className="absolute w-2/3 bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2"
-      src={test}
-      alt="test"
-    />
-  </div>
-);
+
 const SkeletonStoryTelling = () => (
   <div className="relative w-full h-full">
     <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-slate-100 dark:bg-black"></div>
@@ -50,7 +40,7 @@ const items = [
     title: "Visuals matters",
     description:
       "Making a powerful first impression on LinkedIn is crucial, we craft great visuals for your needs.",
-    header: <SkeletonVisuals />,
+    header: <VisualsFeatureHeader />,
     className: "md:col-span-2",
     icon: <IconLayoutCollage className="h-4 w-4 text-neutral-500" />,
   },

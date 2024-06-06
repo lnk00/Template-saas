@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FlipWords } from "@/components/ui/flip-words";
 import { WandSparkles } from "lucide-react";
+import Link from "next/link";
 
 export default async function Landing() {
   return (
@@ -27,10 +28,15 @@ export default async function Landing() {
           powerhouse it deserves to be.
         </h3>
         <div className="mb-16">
-          <Button size={"lg"} className="bg-purple-500 hover:bg-purple-500/90">
-            start optimizing
-            <WandSparkles className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href="/auth/login">
+            <Button
+              size={"lg"}
+              className="bg-purple-500 hover:bg-purple-500/90"
+            >
+              start optimizing
+              <WandSparkles className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
         <BentoFeatures />
       </Container>

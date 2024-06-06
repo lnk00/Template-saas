@@ -2,18 +2,8 @@ import { ArrowRight, LockKeyhole } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import {
-  IconBrandApple,
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconBrandNotion,
-} from "@tabler/icons-react";
-import {
-  LoginWithApple,
-  LoginWithGithub,
-  LoginWithNotion,
-  LoginWithOTP,
-} from "@/app/auth/login/actions";
+import { IconBrandLinkedin } from "@tabler/icons-react";
+import { LoginWithGithub, LoginWithOTP } from "@/app/auth/login/actions";
 import { cn } from "@/lib/utils";
 
 export default function LoginForm() {
@@ -37,7 +27,11 @@ export default function LoginForm() {
           />
         </LabelInputContainer>
 
-        <Button formAction={LoginWithOTP} className="w-full" size={"lg"}>
+        <Button
+          formAction={LoginWithOTP}
+          className="w-full bg-purple-500 hover:bg-purple-500/90"
+          size={"lg"}
+        >
           Login
           <ArrowRight className="h-4" />
         </Button>
@@ -64,8 +58,8 @@ export default function LoginForm() {
 const BottomGradient = () => {
   return (
     <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-teal-400 to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-teal-400 to-transparent" />
+      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
     </>
   );
 };
