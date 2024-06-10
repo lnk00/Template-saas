@@ -24,7 +24,7 @@ export default async function Landing() {
         <h3 className="scroll-m-20 text-xl font-semibold tracking-tight max-w-3xl text-center my-12 text-slate-600">
           Unlock the full potential of LinkedIn. Whether you&apos;re aiming to
           captivate an audience, secure your dream job, or turbocharge your
-          product sales, our solution, reshapes your LinkedIn profile into the
+          product sales, Linkeez, reshapes your LinkedIn profile into the
           powerhouse it deserves to be.
         </h3>
         <div className="mb-16">

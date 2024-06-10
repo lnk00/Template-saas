@@ -23,6 +23,26 @@ export async function LoginWithGithub() {
   }
 }
 
+export async function LoginWithLinkedin() {
+  const supabase = createServerSupabaseClient();
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "linkedin_oidc",
+    options: {
+      redirectTo: "http://localhost:3000/auth/callback",
+    },
+  });
+
+  if (error) {
+    console.log("Error login with Linkedin provider: ", error);
+    return;
+  }
+
+  if (data.url) {
+    redirect(data.url);
+  }
+}
+
 export async function LoginWithApple() {
   const supabase = createServerSupabaseClient();
 
