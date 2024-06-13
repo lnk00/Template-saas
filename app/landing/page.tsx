@@ -1,4 +1,3 @@
-import { BentoFeatures } from "@/components/bento-features";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FlipWords } from "@/components/ui/flip-words";
@@ -10,22 +9,22 @@ export default async function Landing() {
     <main vaul-drawer-wrapper="" className="w-full relative">
       <Container className="pt-48 flex flex-col items-center">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-6xl">
-          Optimize your linkedIn profile to
+          Lorem ipsum dolor sit amet
         </h1>
         <div className="max-h-[60px]">
           <FlipWords
             words={[
-              "engage your audience",
-              "find your dream job",
-              "sell your product",
+              "consectetur adipiscing elit",
+              "Mauris congue rivulus quam",
+              "Quisque id scelerisque",
             ]}
           ></FlipWords>
         </div>
         <h3 className="scroll-m-20 text-xl font-semibold tracking-tight max-w-3xl text-center my-12 text-slate-600">
-          Unlock the full potential of LinkedIn. Whether you&apos;re aiming to
-          captivate an audience, secure your dream job, or turbocharge your
-          product sales, Linkeez, reshapes your LinkedIn profile into the
-          powerhouse it deserves to be.
+          Aliquam erat volutpat. Nullam at venenatis ex, at viverra erat. Aenean
+          cursus turpis dolor, sit amet viverra augue bibendum nec. Mauris
+          bibendum magna eget elit gravida, id facilisis nunc suscipit.
+          Phasellus a semper dolor.
         </h3>
         <div className="mb-16">
           <Link href="/auth/login">
@@ -33,12 +32,11 @@ export default async function Landing() {
               size={"lg"}
               className="bg-purple-500 hover:bg-purple-500/90"
             >
-              start optimizing
+              Nam semper
               <WandSparkles className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
-        <BentoFeatures />
       </Container>
     </main>
   );

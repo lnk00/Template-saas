@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { Provider as StoreProvider } from "jotai";
 import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
-  title: "Vecko",
-  description: "Stay organized and focus",
+  title: "Template",
+  description: "Template for saas applications",
 };
 
 export default function RootLayout({
@@ -17,9 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <StoreProvider>
-        <TooltipProvider delayDuration={0}>
-          <body className={GeistSans.className}>{children}</body>
-        </TooltipProvider>
+        <body className={GeistSans.className}>{children}</body>
       </StoreProvider>
     </html>
   );

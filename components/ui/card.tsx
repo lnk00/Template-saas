@@ -1,7 +1,5 @@
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
-import { AuroraBackground } from "./aurora-background";
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -17,23 +15,6 @@ const Card = React.forwardRef<
   />
 ));
 Card.displayName = "Card";
-
-const AuroraCard = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <AuroraBackground>
-    <div
-      ref={ref}
-      className={cn(
-        "rounded-lg border bg-card text-card-foreground shadow-sm",
-        className,
-      )}
-      {...props}
-    />
-  </AuroraBackground>
-));
-AuroraCard.displayName = "Card";
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,

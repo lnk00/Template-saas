@@ -10,9 +10,9 @@ export default function LoginForm() {
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black relative">
       <LockKeyhole className="h-16 w-16 mb-4 text-slate-800" strokeWidth={2} />
-      <h2 className="font-bold text-xl">Welcome to Linkeez</h2>
+      <h2 className="font-bold text-xl">Welcome</h2>
       <p className="text-slate-600 text-sm max-w-sm mt-2 dark:text-slate-300">
-        Login to Linkeez to start optimizing your profile for your needs.
+        Login to template application
       </p>
 
       <form className="mt-8">
@@ -26,11 +26,7 @@ export default function LoginForm() {
           />
         </LabelInputContainer>
 
-        <Button
-          formAction={LoginWithOTP}
-          className="w-full bg-purple-500 hover:bg-purple-500/90"
-          size={"lg"}
-        >
+        <Button formAction={LoginWithOTP} className="w-full" size={"lg"}>
           Login
           <ArrowRight className="h-4" />
         </Button>
