@@ -7,7 +7,7 @@ import Link from "next/link";
 export default async function Landing() {
   return (
     <main vaul-drawer-wrapper="" className="w-full relative">
-      <Container className="pt-48 flex flex-col items-center">
+      <Container className="flex flex-col items-center justify-center h-screen">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-6xl">
           Lorem ipsum dolor sit amet
         </h1>
@@ -27,7 +27,7 @@ export default async function Landing() {
           Phasellus a semper dolor.
         </h3>
         <div className="mb-16">
-          <Link href="/auth/login">
+          <Link href="/">
             <Button
               size={"lg"}
               className="bg-purple-500 hover:bg-purple-500/90"
