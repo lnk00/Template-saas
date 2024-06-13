@@ -2,8 +2,8 @@ import { ArrowRight, LockKeyhole } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { IconBrandLinkedin } from "@tabler/icons-react";
-import { LoginWithLinkedin, LoginWithOTP } from "@/app/auth/login/actions";
+import { IconBrandGithub } from "@tabler/icons-react";
+import { LoginWithGithub, LoginWithOTP } from "@/app/auth/login/actions";
 import { cn } from "@/lib/utils";
 
 export default function LoginForm() {
@@ -36,11 +36,11 @@ export default function LoginForm() {
         <div className="flex flex-col space-y-4">
           <button
             className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full rounded-md h-10 font-medium shadow-input bg-slate-50 dark:bg-slate-900 dark:shadow-[0px_0px_1px_1px_var(--slate-800)]"
-            formAction={LoginWithLinkedin}
+            formAction={LoginWithGithub}
           >
-            <IconBrandLinkedin className="h-4 w-4 text-slate-800 dark:text-slate-300" />
+            <IconBrandGithub className="h-4 w-4 text-slate-800 dark:text-slate-300" />
             <span className="text-slate-700 dark:text-slate-300 text-sm">
-              Connect with LinkedIn
+              Connect with Github
             </span>
             <BottomGradient />
           </button>
